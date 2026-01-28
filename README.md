@@ -18,7 +18,7 @@ A modern and responsive playlist manager built with React and Vite.
 👉 https://youtu.be/QEaSN7LFdDM
 ## 📸 Screenshots
 
-![App Screenshot](screenshots/login.png)
-![App Screenshot](screenshots/playlist.png)
-![App Screenshot](screenshots/miniplayer.png)
-![App Screenshot](screenshots/edit.png)
+![Login](screenshots/login.png)
+![Playlist](screenshots/playlist.png)
+![Mini Player](screenshots/miniplayer.png)
+![Edit](screenshots/edit.png)
