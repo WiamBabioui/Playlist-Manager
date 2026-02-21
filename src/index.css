@@ -25,9 +25,38 @@ body {background: radial-gradient(circle at top, #1a1a2e, #0f0f0f); min-height:1
 .filters button:hover {transform:translateY(-2px);}
 .track-card {background:#1e1e1e; border-radius:14px; padding:16px; display:flex; align-items:center; gap:15px; margin-bottom:12px; transition: transform 0.2s, box-shadow 0.2s;}
 .track-card:hover {transform:translateY(-2px); box-shadow:0 0 20px rgba(138,43,226,0.3);}
-.track-info {flex:1;}
-.track-info h3 {font-size:16px;}
-.track-info p {font-size:13px; opacity:0.6;}
+/* ==== TRACK CARD SINGLE LINE ==== */
+.track-info {
+  display: flex;           /* active flexbox */
+  align-items: center;     /* aligne verticalement */
+  gap: 10px;               /* espace entre les éléments */
+  flex-wrap: wrap;         /* permet au contenu de passer à la ligne si écran petit */
+}
+
+.track-info .track-num {
+  width: 30px;             /* largeur fixe pour numéro */
+  text-align: right;
+  font-weight: bold;
+}
+
+.track-info .track-title {
+  flex: 1;                 /* prend le maximum d'espace disponible */
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;     /* empêche le texte de se couper */
+  overflow: hidden;
+  text-overflow: ellipsis; /* coupe avec "..." si trop long */
+}
+
+.track-info .track-artist {
+  font-size: 14px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.track-info .genre-pill {
+  margin-left: auto;       /* pousse le genre à l’extrémité droite */
+}
 .badge {padding:4px 10px; border-radius:12px; font-size:12px; background: rgba(138,43,226,0.3);}
 .heart {cursor:pointer; font-size:20px; color:transparent; border:1px solid gray; padding:2px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; transition: transform 0.2s, color 0.2s;}
 .heart.active {color:red; border:none; transform:scale(1.2);}
@@ -383,4 +412,71 @@ body {background: radial-gradient(circle at top, #1a1a2e, #0f0f0f); min-height:1
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+/* ===================== RESPONSIVE POUR MOBILE ET TABLETTE ===================== */
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .app { padding: 15px !important; max-width: 100% !important; }
+
+  .header { flex-direction: column !important; gap: 15px !important; text-align: center !important; }
+  .header h1 { font-size: 22px !important; }
+
+  .filters { justify-content: center !important; flex-wrap: wrap !important; }
+
+  .track-card { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; padding: 12px !important; }
+  .track-info { width: 100% !important; }
+  .track-actions { width: 100% !important; justify-content: space-between !important; flex-wrap: wrap !important; gap: 8px !important; }
+  .badge { font-size: 12px !important; padding: 3px 8px !important; }
+  .heart { margin-top: 5px !important; }
+
+  .add-btn { width: 100% !important; margin-top: 10px !important; }
+
+  .login-card { width: 90% !important; padding: 20px !important; }
+  .login-card h1 { font-size: 22px !important; }
+  .login-card p { font-size: 14px !important; }
+  .login-page { padding: 10px !important; }
+
+  .modal { width: 95% !important; padding: 20px !important; }
+  .modal h2 { font-size: 20px !important; text-align: center !important; }
+  .modal-actions { flex-direction: column !important; gap: 10px !important; }
+  .btn-save, .btn-cancel { width: 100% !important; }
+
+  .mini-player { width: 95% !important; flex-direction: column !important; gap: 10px !important; text-align: center !important; }
+  .mini-player-info h4 { font-size: 14px !important; }
+  .mini-player-info p { font-size: 12px !important; }
+  .mini-player-controls { justify-content: center !important; flex-wrap: wrap !important; gap: 8px !important; }
+}
+
+/* --- Tablette --- */
+@media (max-width: 1024px) {
+  .track-card { gap: 15px !important; }
+  .app { padding: 20px !important; }
+  .login-card { width: 80% !important; }
+  .modal { width: 90% !important; }
+}
+.track-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* <- clé pour pousser .track-actions à droite */
+  gap: 15px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #1e1e1e;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;            /* prend tout l’espace restant */
+  flex-wrap: wrap;
+}
+
+.track-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;      /* empêche de se réduire si texte long */
 }
